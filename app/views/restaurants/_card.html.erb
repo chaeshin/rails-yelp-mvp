@@ -1,0 +1,5 @@
+<div class='p-5 m-3 card-category justify-content-center align-items-center' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://loremflickr.com/600/600/restaurant,<%= restaurant.category.downcase %>?lock=<%= restaurant.id %>)">
+  <h3>
+    <%= link_to restaurant.name, restaurant_path(restaurant), class: 'text-decoration-none text-white p-5' %>
+  </h3>
+</div>

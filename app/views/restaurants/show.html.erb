@@ -1,0 +1,38 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://loremflickr.com/900/400/restaurant,<%= @restaurant.category.downcase %>?lock=<%= @restaurant.id %>)">
+</div>
+
+<div class="container mt-2">
+  <div class="row justify-content-around">
+    <div class="">
+      <h1 class='m-3'><%= @restaurant.name %></h1>
+      <div class='m-3 d-flex'>
+        <p><%= @restaurant.category %> | </p>
+        <p><%= @restaurant.address %></p>
+      </div>
+    </div>
+    <div>
+      <ul>
+        <% if @restaurant.reviews.any? %>
+          <% @restaurant.reviews.each do |review| %>
+            <li>
+            <%= '★' * review.rating %><%= '☆' * (5 - review.rating) %> |
+            <%= review.content %>
+            </li>
+          <% end %>
+        <% else %>
+            <li>No reviews yet</li>
+        <% end %>
+      </ul>
+    </div>
+    <p class='m-3'>
+      <%= link_to new_restaurant_review_path(@restaurant), class: 'btn btn-light' do %>
+        <i class="fa-regular fa-square-plus"></i> Add Review
+      <% end %>
+    </p>
+  </div>
+</div>
+
+
+<%# <%= link_to new_restaurant_review_path(review), class: 'btn btn-link', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+  <%# <i class="fa-regular fa-circle-xmark"></i> %>
+<%# <% end %>
